@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+    //@Bean memberService -> new MemoryMemberRepository()
+    //@Bean orderService -> new MemoryMemberRepository(), new discountPolicy()
+    // MemoryMemberRepository 2번 호출 ? 싱글톤이 파괴?? 자바코드니깐 ?? 테스트르 한번해보자
+
+
     /**
      * @Bean을 통하여 스프링 컨테이너에 등록한다.
      */
