@@ -6,10 +6,13 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+//final이 붙은 파라미터로 받는 생성자를 만들어 줌.
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
 
@@ -31,14 +34,16 @@ public class OrderServiceImpl implements OrderService {
      * private DiscountPolicy discountPolicy; 인터페이스를 의존하면된다. (하지만 이는 null을 일으킴으로 오류가 발생한다.)
      * 따라서 AppConfig를 생성하여 기획자와 같은 임무를 수행하도록 해준다.
      */
+
+    //RequireArgsconstructor을 이용하여 생성자 생성 (final)
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

@@ -1,7 +1,5 @@
 package hello.core.scan.filter;
 
-
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -32,7 +30,5 @@ public class ComponentFilterAppConfigTest {
             includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
             excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
     )
-    static class ComponentFilterAppConfig{
-
-    }
+    static class ComponentFilterAppConfig{}
 }
