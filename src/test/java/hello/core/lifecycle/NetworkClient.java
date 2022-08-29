@@ -1,9 +1,15 @@
 package hello.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+/**
+ * InitializingBean, DisposableBean 단점:
+ * 1. 스프링 전용 인터페이스이다.
+ * 2. 초기화, 소멸 메서드의 이름을 변경할 수 없다.
+ * 3. 내가 코드를 고칠 수 없는 라이브러리에 적용할 수 없다.
+ */
+
+
+public class NetworkClient{
 
     private String url;
 
@@ -29,16 +35,16 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close " + url);
     }
 
+
+
     //의존관계가 끝나면 호출
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    public void init() {
         connect();
         call("초기화 연결 메시지");
     }
 
     //종료시 호출
-    @Override
-    public void destroy() throws Exception {
+    public void close(){
         disconnect();
     }
 }
