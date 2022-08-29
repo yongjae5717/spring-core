@@ -1,6 +1,9 @@
 package hello.core.lifecycle;
 
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * InitializingBean, DisposableBean 단점:
  * 1. 스프링 전용 인터페이스이다.
@@ -38,11 +41,14 @@ public class NetworkClient{
 
 
     //의존관계가 끝나면 호출
+
+    @PostConstruct
     public void init() {
         connect();
         call("초기화 연결 메시지");
     }
 
+    @PreDestroy
     //종료시 호출
     public void close(){
         disconnect();
